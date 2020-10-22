@@ -16,7 +16,9 @@ public class Demo {
     d[2] = two;
     d[3] = three;
     d[4] = four;
-    System.out.println(arrayDeepToString(d));
+    System.out.println(arrayDeepToString(d).replace("}, ","},\n "));
+    System.out.println(arrayDeepToString(create2DArrayRandomized(6,4,4)).replace("}, ","},\n "));
+    System.out.println(arrayDeepToString(create2DArrayRandomized(4,10,100)).replace("}, ","},\n "));
   }
   public static void printLoop(int n) {
     for (int i = 1; i <= n; i++) {
@@ -47,5 +49,26 @@ public class Demo {
     }
     y = y + "}";
     return y;
+  }
+  public static int[][] create2DArray(int rows, int cols, int maxValue) {
+    int[][] arr = new int[rows][cols];
+    for (int i = 0; i < rows; i++) {
+      for (int j = 0; j < cols; j++) {
+        arr[i][j] = (int)(Math.random()*(maxValue + 1));
+      }
+    }
+    return arr;
+  }
+  public static int[][] create2DArrayRandomized(int rows, int cols, int maxValue) {
+    int[][] arr = new int[rows][];
+    for (int i = 0; i < rows; i++) {
+      arr[i] = new int[(int)(Math.random()*(cols + 1))];
+    }
+    for (int i = 0; i < rows; i++) {
+      for (int j = 0; j < arr[i].length; j++) {
+        arr[i][j] = (int)(Math.random()*(maxValue + 1));
+      }
+    }
+    return arr;
   }
 }
